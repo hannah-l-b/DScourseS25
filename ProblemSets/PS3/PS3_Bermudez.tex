@@ -1,0 +1,46 @@
+\documentclass{article}
+\usepackage{graphicx} % Required for inserting images
+
+
+% Set page size and margins
+% Replace `letterpaper' with `a4paper' for UK/EU standard size
+\usepackage[letterpaper,top=2cm,bottom=2cm,left=3cm,right=3cm,marginparwidth=1.75cm]{geometry}
+
+% Useful packages
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage[colorlinks=true, allcolors=blue]{hyperref}
+
+\title{PS3 - ECON 5253}
+\author{Hannah Bermudez}
+\date{January 2025}
+
+\begin{document}
+
+\maketitle
+
+\section{SQL Code for Problem 5}
+\begin{itemize}
+    \item a) \texttt{.mode csv} \\
+          \texttt{.import /home/ouecon001/DScourseS25/ProblemSets/PS3/FL\_insurance\_sample.csv \space FLinsurance}
+    \item b) SELECT * FROM FLinsurance LIMIT 10;
+    \item c) \texttt{PRAGMA table\_info(FLinsurance)} \\
+          \texttt{SELECT DISTINCT county FROM FLinsurance;}
+    \item d) \texttt{SELECT avg(tiv\_2012 - tiv\_2011) AS avg\_prop\_app FROM FLinsurance;} \\ 
+          \texttt{-- 398,129.10}
+    \item e) \texttt{SELECT construction, COUNT(construction) AS freq,} \\
+          \texttt{COUNT(*) * 1.0 / (SELECT COUNT(*) FROM FLinsurance) AS rel\_freq} \\
+          \texttt{FROM FLinsurance GROUP BY construction;}
+\end{itemize}
+
+\section{Answers to Problem 6}
+\begin{itemize}
+    \item a) How big was the insurance .csv file (once uncompressed)? \\ 
+          \texttt{-rw-r--r--. 1 ouecon001 ouecon 5MB Jan 31 09:26 FL\_insurance\_sample.csv}
+    \item b) How many lines did the CSV file have before doing the end-of-line (EOL) conversion? \\
+        \texttt{The CSV file had 0 lines before EOL conversion.}
+    \item c) How many lines did the CSV file have after doing the EOL conversion? \\
+        \texttt{After EOL conversion, the CSV file had 36,634 lines.}
+\end{itemize}
+
+\end{document}
