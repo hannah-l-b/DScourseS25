@@ -1,0 +1,53 @@
+\documentclass{article}
+\usepackage{graphicx} % Required for inserting images
+
+
+% Set page size and margins
+% Replace `letterpaper' with `a4paper' for UK/EU standard size
+\usepackage[letterpaper,top=2cm,bottom=2cm,left=3cm,right=3cm,marginparwidth=1.75cm]{geometry}
+
+% Useful packages
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage[colorlinks=true, allcolors=blue]{hyperref}
+
+\title{PS5 - ECON 5253}
+\author{Hannah Bermudez}
+\date{February 2025}
+
+\begin{document}
+
+\maketitle
+
+\section{Scrape Without API}
+
+\subsection{Research Relevance}
+\hspace*{2em} I extracted data from a Wikipedia article that provides a list of significant fraud cases. I am interested in behavioral research surrounding fraud and aspects of the audit process, including auditor characteristics. Examining the underlying patterns behind fraud cases could help me identify general tendencies among companies, auditors, and individuals, which could then be applied to smaller populations for more targeted analysis. 
+
+In this instance, this data could be beneficial to me in the future for manually collecting and analyzing SEC reports, allowing me to cross-reference findings with the compiled list to confirm any trends in behavior or patterns in fraudulent activity.
+
+\subsection{Potential Use Cases}
+This data can be useful for:
+\begin{itemize}
+    \item Analyzing patterns in major financial fraud cases.
+    \item Identifying behavioral trends in fraud across different industries.
+\end{itemize}
+
+\subsection{Online Resources Used}
+I did not use any online resources/tutorials.
+
+\section{Scrape With API}
+
+\subsection{Exploring Insights into SEC EDGAR API}
+\hspace*{2em} The SEC EDGAR API offers structured data from public companies, enabling users to retrieve company filings, financial reports, and other relevant information. I successfully accessed recent filings for Wells Fargo and extracted balance sheet data for Apple using two different API endpoints.I didn't necessarily learn anything interesting; I mostly pulled raw financial data to explore how the API works and to test its functionality. However, I can see how this would be useful for analyzing specific aspects of a company's financial performance and other key characteristics.
+
+\subsection{Packages Used}
+\begin{itemize}
+    \item tidyverse
+    \item rvest
+    \item httr
+    \item jsonlite
+    \item tibble
+\end{itemize}
+
+\end{document}
