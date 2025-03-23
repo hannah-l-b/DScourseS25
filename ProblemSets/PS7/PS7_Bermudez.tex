@@ -1,0 +1,105 @@
+\documentclass{article}
+\usepackage{graphicx} % Required for inserting images
+
+
+% Set page size and margins
+% Replace `letterpaper' with `a4paper' for UK/EU standard size
+\usepackage[letterpaper,top=2cm,bottom=2cm,left=3cm,right=3cm,marginparwidth=1.75cm]{geometry}
+
+% Useful packages
+\usepackage{amsmath}
+\usepackage{tabularray}
+\usepackage{float}
+
+\title{PS7 - ECON 5253}
+\author{Hannah Bermudez}
+\date{February 2025}
+
+\begin{document}
+
+\maketitle
+
+\section{Summary using Modelsummary Package}
+\begin{table}[H]
+\centering
+\begin{tblr}{
+  colspec={Q[l] Q[c] Q[c] Q[c] Q[c] Q[c] Q[c] Q[c]}, 
+  hline{1,10} = {solid}, 
+  hline{6} = {solid, 0.1em} 
+}
+\toprule
+Variable & Unique & Missing Pct. & Mean & SD & Min & Median & Max \\ 
+\midrule
+logwage & 670 & 25 & 1.6 & 0.4 & 0.0 & 1.7 & 2.3 \\
+hgc & 16 & 0 & 13.1 & 2.5 & 0.0 & 12.0 & 18.0 \\
+tenure & 259 & 0 & 6.0 & 5.5 & 0.0 & 3.8 & 25.9 \\
+age & 13 & 0 & 39.2 & 3.1 & 34.0 & 39.0 & 46.0 \\
+\midrule
+\multicolumn{2}{l}{\textbf{Categorical Variables}} & N & \% &  &  &  &  \\
+\midrule
+\multirow{2}{*}{College} & College grad & 530 & 23.8 &  &  &  &  \\
+& Not college grad & 1699 & 76.2 &  &  &  &  \\
+\midrule
+\multirow{2}{*}{Married} & Married & 1431 & 64.2 &  &  &  &  \\
+& Single & 798 & 35.8 &  &  &  &  \\
+\bottomrule
+\end{tblr}
+\caption{Summary statistics of variables}
+\label{tab:summary}
+\end{table}
+
+\subsection{logwage: MCAR, MNAR, MAR?}
+The logwage variable is missing 25.12 percent of the observations.
+
+\medskip
+
+This suggests that the missing data for `logwage` is likely Missing Not at Random (MNAR) or Missing at Random (MAR), given that 25 percent of the observations are missing. The nonresponse may be influenced by factors related to the data itself, such as wage level, where individuals with particularly high or low wages might choose not to report their earnings due to concerns about judgment. Additionally, missingness may be associated with education or other systemic factors contributing to nonresponse. As a result, the missing data cannot be classified as Missing Completely at Random (MCAR).
+
+\section{Regressions}
+\begin{table}[H]
+\centering
+\begin{talltblr}[         %% tabularray outer open
+entry=none,label=none,
+note{}={+ p \num{< 0.1}, * p \num{< 0.05}, ** p \num{< 0.01}, *** p \num{< 0.001}},
+]                     %% tabularray outer close
+{                     %% tabularray inner open
+colspec={Q[]Q[]Q[]Q[]Q[]},
+column{2,3,4,5}={}{halign=c,},
+column{1}={}{halign=l,},
+hline{16}={1,2,3,4,5}{solid, 0.05em},
+}                     %% tabularray inner close
+\toprule
+& Listwise Deletion & Mean Imputation & Regression Imputation & Multiple Imputation \\ \midrule %% TinyTableHeader
+(Intercept)                   & \num{0.534}***  & \num{0.708}***  & \num{0.534}***  & \num{0.630}***  \\
+& (\num{0.146})   & (\num{0.116})   & (\num{0.112})   & (\num{0.162})   \\
+hgc                           & \num{0.062}***  & \num{0.050}***  & \num{0.062}***  & \num{0.059}***  \\
+& (\num{0.005})   & (\num{0.004})   & (\num{0.004})   & (\num{0.006})   \\
+collegenot college grad       & \num{0.145}***  & \num{0.168}***  & \num{0.145}***  & \num{0.115}**   \\
+& (\num{0.034})   & (\num{0.026})   & (\num{0.025})   & (\num{0.033})   \\
+tenure                        & \num{0.050}***  & \num{0.038}***  & \num{0.050}***  & \num{0.044}***  \\
+& (\num{0.005})   & (\num{0.004})   & (\num{0.004})   & (\num{0.004})   \\
+I(tenure\textasciicircum{}2) & \num{-0.002}*** & \num{-0.001}*** & \num{-0.002}*** & \num{-0.001}*** \\
+& (\num{0.000})   & (\num{0.000})   & (\num{0.000})   & (\num{0.000})   \\
+age                           & \num{0.000}     & \num{0.000}     & \num{0.000}     & \num{0.000}     \\
+& (\num{0.003})   & (\num{0.002})   & (\num{0.002})   & (\num{0.003})   \\
+marriedsingle                 & \num{-0.022}    & \num{-0.027}*   & \num{-0.022}+   & \num{-0.017}    \\
+& (\num{0.018})   & (\num{0.014})   & (\num{0.013})   & (\num{0.020})   \\
+Num.Obs.                      & \num{1669}      & \num{2229}      & \num{2229}      &                  \\
+R2                            & \num{0.208}     & \num{0.147}     & \num{0.277}     &                  \\
+R2 Adj.                       & \num{0.206}     & \num{0.145}     & \num{0.275}     &                  \\
+AIC                           & \num{1179.9}    & \num{1091.2}    & \num{925.5}     &                  \\
+BIC                           & \num{1223.2}    & \num{1136.8}    & \num{971.1}     &                  \\
+Log.Lik.                      & \num{-581.936}  & \num{-537.580}  & \num{-454.737}  &                  \\
+F                             & \num{72.917}    & \num{63.973}    & \num{141.686}   &                  \\
+RMSE                          & \num{0.34}      & \num{0.31}      & \num{0.30}      &                  \\
+\bottomrule
+\end{talltblr}
+\end{table} 
+
+\subsection{Patterns/Differences of hgc Beta Across Models}
+None of the betas for hgc are close to the true beta of 0.093, which suggests that all models exhibit some degree of bias due to the missing data mechanism or the imputation methods used. This could be due to the variation in size between the sample and the population, attributing to sampling error. In addition, the listwise deletion and regression imputation share the same coefficient and similar standard deviations. Considering that the number of observations drops from 2229 to 1669 for the listwise deletion model, using the regression imputation model could be preferable, as it retains more observations while producing an estimate identical to that of listwise deletion. The R-squared for the regression imputation model is also bigger compared to the listwise deletion, proving that the model fit is better and explains a greater proportion of the variability in logwage.
+
+\section{Final Project Progress}
+I am planning to run an experiment with undergraduate and graduate accounting students to look at decision-making in an audit context. Currently, I have sent my instrument to the IRB for approval and I expect to administer the survey sometime near the end of March or beginning of April. I plan to perform ANOVA and regression analysis to examine the effects of certain factors on the revision of sequential beliefs. Due to my data not being currently available, I have since begun working on the report. 
+
+\end{document}
