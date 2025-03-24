@@ -24,6 +24,8 @@ cat("The logwage variable is missing", round(missing_rate_percentage, 2), "% of 
 # Remove rows with missing logwage (Listwise Deletion)
 df_l <- df %>% drop_na(logwage)
 
+df_l <- df_l %>% mutate(college = as.factor(college), married = as.factor(married))
+
 # Run the linear regression model
 df_l_lm <- lm(logwage ~ hgc + college + tenure + I(tenure^2) + age + married, data = df_l)
 
@@ -76,7 +78,6 @@ model_comparison <- modelsummary(
        "Multiple Imputation" = df_mice_lm), 
   stars = TRUE, 
   gof_omit = "all", 
-  output = "latex"
 )
 
 # Print the model comparison table
