@@ -1,4 +1,5 @@
 library(nloptr)
+library(modelsummary)
 
 # Set seed for reproducibility
 set.seed(100)
@@ -178,3 +179,6 @@ ols_model <- lm(y ~ X - 1)
 
 # Print summary in console
 summary(ols_model)
+
+# Export to LaTeX (.tex) file
+modelsummary(ols_model, output = "regression_output.tex")
