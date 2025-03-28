@@ -1,0 +1,69 @@
+\documentclass{article}
+\usepackage{graphicx} % Required for inserting images
+
+
+% Set page size and margins
+% Replace `letterpaper' with `a4paper' for UK/EU standard size
+\usepackage[letterpaper,top=2cm,bottom=2cm,left=3cm,right=3cm,marginparwidth=1.75cm]{geometry}
+
+% Useful packages
+\usepackage{amsmath}
+\usepackage{tabularray}
+\usepackage{float}
+
+\title{PS8 - ECON 5253}
+\author{Hannah Bermudez}
+\date{March 2025}
+
+\begin{document}
+
+\maketitle
+
+\section{Q9 - Output}
+\begin{table}[H]
+\centering
+\begin{tblr}[         %% tabularray outer open
+]                     %% tabularray outer close
+{                     %% tabularray inner open
+colspec={Q[]Q[]},
+column{2}={}{halign=c,},
+column{1}={}{halign=l,},
+hline{22}={1,2}{solid, 0.05em},
+}                     %% tabularray inner close
+\toprule
+& (1) \\ \midrule %% TinyTableHeader
+X1       & \num{1.501}      \\
+& (\num{0.002})    \\
+X2       & \num{-1.001}     \\
+& (\num{0.002})    \\
+X3       & \num{-0.252}     \\
+& (\num{0.002})    \\
+X4       & \num{0.749}      \\
+& (\num{0.002})    \\
+X5       & \num{3.501}      \\
+& (\num{0.002})    \\
+X6       & \num{-2.001}     \\
+& (\num{0.002})    \\
+X7       & \num{0.499}      \\
+& (\num{0.002})    \\
+X8       & \num{1.003}      \\
+& (\num{0.002})    \\
+X9       & \num{1.247}      \\
+& (\num{0.002})    \\
+X10      & \num{2.001}      \\
+& (\num{0.002})    \\
+Num.Obs. & \num{100000}     \\
+R2       & \num{0.991}      \\
+R2 Adj.  & \num{0.991}      \\
+AIC      & \num{145143.6}   \\
+BIC      & \num{145248.3}   \\
+Log.Lik. & \num{-72560.811} \\
+RMSE     & \num{0.50}       \\
+\bottomrule
+\end{tblr}
+\end{table}
+
+\subsection{Q9 - Answer}
+The OLS estimates of $\hat{\beta}$ obtained from the lm() function are very close to the true $\beta$ values used to generate the data. This suggests that the closed-form and numerical optimization methods were implemented successfully.
+
+\end{document}
