@@ -1,0 +1,89 @@
+\documentclass{article}
+\usepackage{graphicx} % Required for inserting images
+
+
+% Set page size and margins
+% Replace `letterpaper' with `a4paper' for UK/EU standard size
+\usepackage[letterpaper,top=2cm,bottom=2cm,left=3cm,right=3cm,marginparwidth=1.75cm]{geometry}
+
+% Useful packages
+\usepackage{amsmath}
+\usepackage{tabularray}
+\usepackage{float}
+
+\title{PS9 - ECON 5253}
+\author{Hannah Bermudez}
+\date{April 2025}
+
+\begin{document}
+
+\maketitle
+
+\section{Q7}
+
+\begin{itemize}
+    \item What is the dimension of your training data?
+    \begin{itemize}
+        \item The training data has 74 rows and 404 columns.
+    \end{itemize}
+    
+    \item How many more X variables do you have than in the original housing data?
+    \begin{itemize}
+        \item The original housing dataset had 14 variables, 13 of which were predictors (X variables). This suggests that the training data has 61 more predictor variables than the original dataset.
+    \end{itemize}
+\end{itemize}
+
+\section{Q8 - Estimating LASSO}
+
+\begin{itemize}
+    \item What is the optimal value of lambda?
+    \begin{itemize}
+        \item The optimal value of lambda is: 0.00222
+    \end{itemize}
+
+    \item What is the in-sample RMSE?
+    \begin{itemize}
+        \item The in-sample RMSE is: 0.138
+    \end{itemize}
+
+    \item What is the out-of-sample RMSE?
+    \begin{itemize}
+        \item The out-of-sample RMSE is: 0.184
+    \end{itemize}
+\end{itemize}
+
+\section{Q9 - Estimating Ridge}
+
+\begin{itemize}
+    \item What is the optimal value of lambda?
+    \begin{itemize}
+        \item The optimal value of lambda is: 0.0000000001
+    \end{itemize}
+
+    \item What is the in-sample RMSE?
+    \begin{itemize}
+        \item The in-sample RMSE is: 0.140
+    \end{itemize}
+
+    \item What is the out-of-sample RMSE?
+    \begin{itemize}
+        \item The out-of-sample RMSE is: 0.181
+    \end{itemize}
+\end{itemize}
+
+\section{Q10}
+
+\begin{itemize}
+    \item Would you be able to estimate a simple linear regression model on a data set that had more columns than rows?
+    \begin{itemize}
+        \item You cannot estimate a simple linear regression model (using OLS) when there are more columns than rows. This is due to multicollinearity in the X matrix. 
+    \end{itemize}
+    
+    \item Using the RMSE values of each of the tuned models in the previous two questions, comment on where your model stands in terms of the bias-variance trade-off.
+
+    \begin{itemize}
+        \item For the LASSO model, the in-sample RMSE was 0.138 and the out-of-sample RMSE was 0.184, while the Ridge model had an in-sample RMSE of 0.140 and an out-of-sample RMSE of 0.181. The LASSO model fits the training data slightly better (lower in-sample RMSE) but performs slightly worse on the test data (higher out-of-sample RMSE), indicating it may have higher variance. Conversely, the Ridge model sacrifices a bit of in-sample fit for improved generalization, suggesting it introduces slightly more bias but achieves lower variance overall. Therefore, the Ridge model may be better balanced in terms of the bias-variance trade-off in this case, as its smaller out-of-sample error indicates better predictive performance on new data. 
+    \end{itemize}
+\end{itemize}
+
+\end{document}
