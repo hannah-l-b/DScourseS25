@@ -106,7 +106,7 @@ print(clustersKDR)
 # compare k-means classes with actual classes
 print(table(Y,clustersKDR$cluster))
 
-
+fdjsaiop
 # the below uses mlr ... now obsolete
 ## try naive Bayes in full and reduced data ... how do we do?
 #-------------------------------
