@@ -1,0 +1,50 @@
+\documentclass{article}
+\usepackage{graphicx} % Required for inserting images
+
+
+% Set page size and margins
+% Replace `letterpaper' with `a4paper' for UK/EU standard size
+\usepackage[letterpaper,top=2cm,bottom=2cm,left=3cm,right=3cm,marginparwidth=1.75cm]{geometry}
+
+% Useful packages
+\usepackage{amsmath}
+\usepackage{tabularray}
+\usepackage{float}
+
+\title{PS10 - ECON 5253}
+\author{Hannah Bermudez}
+\date{April 2025}
+
+\begin{document}
+
+\maketitle
+
+\section{Model Summaries}
+\begin{table}[H]
+\centering
+\begin{tblr}[         %% tabularray outer open
+]                     %% tabularray outer close
+{                     %% tabularray inner open
+colspec={Q[]Q[]Q[]Q[]Q[]Q[]Q[]Q[]Q[]Q[]},
+column{1,2,3,4,5,6,7,8,9,10}={}{halign=l,},
+}                     %% tabularray inner close
+\toprule
+penalty & .estimate & alg & cost\_complexity & tree\_depth & min\_n & hidden\_units & neighbors & cost & rbf\_sigma \\ \midrule %% TinyTableHeader
+\num{0.00} & \num{0.85} & logit &             &              &              &             &              &             &             \\
+& \num{0.87} & tree  & \num{0.00} & \num{15.00} & \num{10.00} &             &              &             &             \\
+\num{1.00} & \num{0.83} & nnet  &             &              &              & \num{1.00} &              &             &             \\
+& \num{0.84} & knn   &             &              &              &             & \num{30.00} &             &             \\
+& \num{0.86} & svm   &             &              &              &             &              & \num{1.00} & \num{0.50} \\
+\bottomrule
+\end{tblr}
+\end{table} 
+
+\begin{itemize}
+    \item How does each algorithm’s out-of-sample performance compare
+with each of the other algorithms?
+    \begin{itemize}
+        \item Based on the out-of-sample performance of the five algorithms, the algorithm that appears to perform the best is the decision tree, followed by the svm model, the logit model, the knn model, and the neural network model. 
+    \end{itemize}
+\end{itemize}
+
+\end{document}
